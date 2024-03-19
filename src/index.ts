@@ -9,6 +9,7 @@ import studentroutes from './routes/student.routes';
 import * as cors from 'cors'
 import { AppError } from "./utils/AppError"
 import { error } from "console"
+// import * as swaggerFile from "./swagger-outputfile.json"
 
 AppDataSource.initialize().then(async () => {
 
@@ -23,11 +24,12 @@ AppDataSource.initialize().then(async () => {
 app.use(cors({origin:'*'}))
 
     app.get("/",(req :Request,res : Response , next:NextFunction)=>{
-        res.json({message: "ayush"})
+        res.json({message: "Ritesh"})
        })
     app.use ('/student',studentroutes)
 
     //all handle routes
+// app.use('/doc',swaggerUiExpress.serve,swaggerUiExpress.setup(swaggerFile))
 
     app.all('*',(req:Request, res:Response, next:NextFunction)=>{
         next(new AppError(404,`${req.originalUrl} Notfound`))
